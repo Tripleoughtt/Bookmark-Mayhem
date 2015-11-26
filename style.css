@@ -1,0 +1,17 @@
+.unnamed {
+  color: lightgray;
+  font-weight: normal;
+}
+
+.linkTab {
+  background-color: white;
+  border-radius: 4px; 
+  border: 1px solid gray;
+  padding: .1em .5em;
+  margin: .2em .2em;
+  display: inline-block;
+}
+
+.dropdown {
+  /*display: inline-block;*/
+}

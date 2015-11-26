@@ -1,0 +1,27 @@
+<button class="btn btn-default" ui-sref='main'>View Links</button>
+<div class="input-group">
+  <p>Add Tag:</p>
+  <span class="input-group-addon"></span>
+  <input type="text" class="form-control" placeholder="Tag Name" ng-model='input.tabName'>
+
+  <span class='input-group-btn'>
+    <button class="btn btn-default" ng-click='add(input)'>
+      Add!
+    </button>
+  </span>
+
+</div>
+<h4>Tags</h4>
+<ul>
+  <li ng-repeat='tab in tabs | orderBy: "tabName"'>
+    <strong ui-sref='tag({tab: tab.tabName})' >{{tab.tabName}}</strong>
+
+    <br>
+    <span ng-show='!tab.links.length' >
+      <i ng-click="deleteTab(tab)" class="fa fa-trash-o"></i>
+      Remove Tag
+    </span>
+
+    {{(tab.links.length) ? 'Links: ' + tab.links.length : ''}}
+  </li>
+</ul>

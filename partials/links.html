@@ -1,0 +1,40 @@
+<button class="btn btn-default" ui-sref='tags'>View Tags</button>
+<div class="input-group">
+  <p>Add Link:</p>
+  <span class="input-group-addon"></span>
+  <input type="text" class="form-control" placeholder="Link Name" ng-model='input.linkName'>
+
+  <span class="input-group-addon"></span>
+  <input type="text" class="form-control" placeholder="url" ng-model='input.linkUrl'>
+
+  <span class='input-group-btn'>
+    <button class="btn btn-default" ng-click='add(input)'>
+      Add!
+    </button>
+  </span>
+
+</div>
+
+<h4>Links</h4>
+
+<ul>
+  <li ng-repeat='link in links | orderBy: dateCreated'>
+    <strong>{{link.linkName}}</strong>
+    <a ng-click='deleteLink(link)'><i class="fa fa-trash-o"></i></a>
+    <br>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Add Tag
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li ng-repeat="tab in getNotTabsByLink(link)"><a ng-click='addTabToLink(link,tab)'>{{tab.tabName}}</a></li>
+      </ul>
+    </div>
+    <a href="{{link.linkUrl}}">{{link.linkUrl}}</a>
+    <br>
+    <div class='linkTab' ng-repeat="tab in linkTabs(link)" ui-sref='tag({tab: tab.tabName})'>
+      {{tab.tabName}}
+    </div>
+  </li>
+</ul>

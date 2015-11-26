@@ -1,0 +1,12 @@
+<button class="btn btn-default" ui-sref='main'>View Links</button>
+<button class="btn btn-default" ui-sref='tags'>View Tags</button>
+
+<h4>{{tab().tabName}}</h4>
+<ul>
+  <span ng-hide="tab().links"> No links in this tag.</span>
+  <li ng-repeat='link in tab().links'>
+    <strong ng-class="{ unnamed: (link.linkName) ? false : true}">{{link.linkName || 'un-named'}}</strong>
+    <br>
+    {{link.linkUrl}}
+  </li>
+</ul>
